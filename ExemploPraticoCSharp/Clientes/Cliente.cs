@@ -1,4 +1,5 @@
-﻿using ExemploPraticoCSharp.Pessoas;
+﻿using ExemploPraticoCSharp.Banco;
+using ExemploPraticoCSharp.Pessoas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,15 @@ namespace ExemploPraticoCSharp.Clientes
 {
     class Cliente : Pessoa
     {
-        public String  Conta { get; set; }
-        public String Agencia { get; set; }
-        public double Saldo { get; set; }
-        public Cliente(string nome, string CPF, Endereco enderecos, String agencia, String conta) : base(nome, CPF, enderecos)
+        public Conta  Conta { get; set; }
+  
+        public Cliente(string nome, string CPF, Endereco enderecos, Conta conta) : base(nome, CPF, enderecos)
         {
             Conta = conta;
-            Agencia = agencia;
-            Saldo = 0;
+            
         }
 
-        public string Name { get; set; }
+        
     }
 }
+ 

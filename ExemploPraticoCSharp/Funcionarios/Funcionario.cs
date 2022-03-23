@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ExemploPraticoCSharp.Pessoas;
 
-namespace ExemploPraticoCSharp.Funcionario
+namespace ExemploPraticoCSharp.Funcionarios
 {
-    public class Funcionario 
+    public abstract class Funcionario: Pessoa
     {
         private String departamento;
         private double salario;
@@ -17,6 +17,10 @@ namespace ExemploPraticoCSharp.Funcionario
             this.departamento = departamento;
             this.salario = salario;
         }
+
+        public abstract void getBonificacao();
+        public abstract void setAjusteDeSalario();
+
 
     }
 }
