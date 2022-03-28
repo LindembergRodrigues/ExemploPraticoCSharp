@@ -3,8 +3,6 @@
     public class Endereco
     {
         private int _numero;
-        private string? numero;
-
         public String Rua  { get; set; }
         public String  Bairro { get; set; }
         public int Numero {

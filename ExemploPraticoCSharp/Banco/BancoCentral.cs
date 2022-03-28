@@ -13,9 +13,9 @@ namespace ExemploPraticoCSharp.Banco
     {
         private String Banco { get; set; }
         private Endereco endereco;
+        public int Agencia { get; set; }
         private Cliente[] cliente;
         private Funcionario[] funcionarios;
-        public int Agencia { get; set; }
         public int qtdClientes { get; private set; }
         public int qtdColaboradores { get; private set; }
 
@@ -24,6 +24,10 @@ namespace ExemploPraticoCSharp.Banco
             Banco = banco;
             this.endereco = endereco;
             this.Agencia = agencia;
+            cliente = new Cliente[50];
+            funcionarios = new Funcionario[50];
+            qtdClientes = 0;
+            qtdColaboradores = 0;
         }
 
         public bool isCliente(String cpf)
