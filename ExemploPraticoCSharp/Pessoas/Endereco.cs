@@ -5,6 +5,7 @@
         private int _numero;
         public String Rua  { get; set; }
         public String  Bairro { get; set; }
+        public String Cidade { get; set; }
         public int Numero {
             get
             {
@@ -18,8 +19,7 @@
                 }
             }
         }
-        public String Cidade { get; set; }
-        
+                
         public Endereco(string rua, String  bairro, int numero, String cidade)
         {
             Rua = rua;  

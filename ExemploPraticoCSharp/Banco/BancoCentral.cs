@@ -1,64 +1,34 @@
-﻿using ExemploPraticoCSharp.Pessoas;
-using ExemploPraticoCSharp.Clientes;
+﻿using ExemploPraticoCSharp.Clientes;
 using ExemploPraticoCSharp.Funcionarios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ExemploPraticoCSharp.Pessoas;
 
 namespace ExemploPraticoCSharp.Banco
 {
     internal class BancoCentral
     {
-        private String Banco { get; set; }
+        private String agencia;
         private Endereco endereco;
-        public int Agencia { get; set; }
-        private Cliente[] cliente;
+        private int qtdClientes;
+        private int qtdFuncionarios;
+
+        private Cliente[] clientes;
         private Funcionario[] funcionarios;
-        public int qtdClientes { get; private set; }
-        public int qtdColaboradores { get; private set; }
 
-        public BancoCentral(String banco, Endereco endereco, int agencia)
+        public BancoCentral (String agencia, Endereco endereco)
         {
-            Banco = banco;
+            this.agencia = agencia;
             this.endereco = endereco;
-            this.Agencia = agencia;
-            cliente = new Cliente[50];
+            this.qtdClientes = 0;
+            this.qtdFuncionarios = 0;
+            clientes = new Cliente[50];
             funcionarios = new Funcionario[50];
-            qtdClientes = 0;
-            qtdColaboradores = 0;
         }
 
-        public bool isCliente(String cpf)
+        public void AbrirConta()
         {
-            bool isCliente = false;
-            for (int i = 0; i < qtdClientes; i++)
-            {
-                if (cliente[i].Equals(cpf))
-                {
-                    isCliente = true;
-                    break;
-                }
-            }
-            return isCliente;
+            clientes[qtdClientes] = conta
+            
         }
-
-        public bool isFuncionario(String cpf)
-        {
-            bool isFuncionario = false;
-            for (int i = 0; i < qtdClientes; i++)
-            {
-                if (cliente[i].Equals(cpf))
-                {
-                    isFuncionario  = true;
-                    break;
-                }
-            }
-            return isFuncionario;
-        }
-
-       
     }
         
 }

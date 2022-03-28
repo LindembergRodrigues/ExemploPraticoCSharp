@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
 using ExemploPraticoCSharp.Pessoas;
 
 namespace ExemploPraticoCSharp.Funcionarios
 {
-    public abstract class Funcionario: Pessoa
+    public abstract class Funcionario : Pessoa
     {
-        private String departamento;
-        private double salario;
-
-        public Funcionario(string nome, string cPF, Endereco endereco, String departamento,double salario) : base(nome, cPF, endereco)
+        public String  Setor { get; set; }
+        public double Salario { get; private set; }
+        private int id;
+        protected Funcionario(int id, string nome, string CPF, Endereco enderecos, string setor, double salario) : base(nome, CPF, enderecos)
         {
-            this.departamento = departamento;
-            this.salario = salario;
+            this.id = id;
+            Setor = setor;
+            Salario = salario;
         }
-
-        public abstract void getBonificacao();
-        public abstract void setAjusteDeSalario();
-
-
     }
 }

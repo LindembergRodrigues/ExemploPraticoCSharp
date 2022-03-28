@@ -1,49 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ExemploPraticoCSharp.Clientes;
 
 namespace ExemploPraticoCSharp.Banco
 {
     class Conta
     {
-
-        
+        private String conta;
+        private String agencia;
         private double _saldo;
+        private Cliente cliente;
 
-        public double Saldo {
-            get { 
-                return _saldo;
-            }
-            set {
-                if (value > 0)
-                {
-                    _saldo += value;
-                }
-            }
-        }
-        public String Agencia { get; set; }
-        public int Id { get; set; }
-        public int TipoConta { get; set; }
-        public Conta(String agencia, int id, double saldo, int tipoConta)
+        public void Depositar(double valor)
         {
-            Agencia = agencia;
-            Id = id;
-            Saldo = saldo;
-            TipoConta = tipoConta;
-        }
-
-        public void Depositar(double saldo)
-        {
-            Saldo = saldo;
-        }
-        
-        public void Sacar(double saldo)
-        {
-            if(Saldo - saldo > 0)
+            if (valor > 0)
             {
-                Saldo -= saldo;
+                _saldo += valor;
+            }
+        }
+
+        public void Sacar(double valor)
+        {
+            if (_saldo - valor >= 0)
+            {
+                _saldo -= valor;
+            }
+        }
+
+        public void Transferir(double valor, Conta conta)
+        {
+            if (valor > 0)
+            {
+                conta.Depositar(valor);
+                Sacar(valor);
             }
         }
     }
