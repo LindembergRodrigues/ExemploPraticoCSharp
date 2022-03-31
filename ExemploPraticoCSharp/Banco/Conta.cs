@@ -4,7 +4,7 @@ namespace ExemploPraticoCSharp.Banco
 {
     class Conta
     {
-        public String IdConta { get; private set; }
+        public String IdConta { get;}
         private String agencia;
         private double _saldo;
         private Cliente cliente;
