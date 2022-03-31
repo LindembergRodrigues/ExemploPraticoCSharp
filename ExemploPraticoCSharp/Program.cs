@@ -32,8 +32,9 @@ namespace ExemploPraticoCSharp
             {
                 Console.WriteLine("ID colaborador");
                 String colaborador = Console.ReadLine();
-                if (isColaborador(BC,colaborador))
-                    Colaborador(colaborador);
+                int posicao = isColaborador(BC, colaborador);
+                if (posicao != -1)
+                    Colaborador(BC.Contas[posicao]);
             }
             else
                 Console.WriteLine("OPÇÃO INVALIDA!");
@@ -41,30 +42,32 @@ namespace ExemploPraticoCSharp
 
 
         }
+
+
         /// <summary>
         /// verifica se o id informado corresponde ao de um colaborador
         /// </summary>
-        /// <param name="bC"></param>
-        /// <param name="colaborador"></param>
-        /// <returns></returns>
-        private static bool isColaborador(BancoCentral bC, string colaborador)
+        /// <param name="bC">identificador de banco</param>
+        /// <param name="colaborador"> identificador do colaborador</param>
+        /// <returns> a situação do colaborador no banco</returns>
+        private static int isColaborador(BancoCentral bC, string colaborador)
         {
             for (int i = 0; i < bC.QtdClientes; i++)
             {
                 if (bC.Contas[i].IdConta == colaborador)
                 {
-                    return true;
+                    return i;
                     break;
                 }
             }
-            return false;
+            return -1;
         }
 
         /// <summary>
         /// Menu de opção para manutenção de colaboradores
         /// </summary>
         /// <param name="idConta"></param>
-        private static void Colaborador(string idConta)
+        private static void Colaborador(Conta conta)
         {
             Console.WriteLine("(V)erifica Saldo" +
                  "\n(S)aque" +
@@ -74,17 +77,17 @@ namespace ExemploPraticoCSharp
             switch (op.ToUpper())
             {
                 case "V":
-                    Saldo(idConta);
+                    Saldo(conta);
                     break;
                 case "S":
                     Console.WriteLine("Valor para saque: ");
-                    double saque = Console.Read();
-                    saque(idConta,saque);
+                    double valorSaque = Console.Read();
+                    sacar(conta, valorSaque);
                     break;
                 case "D":
                     Console.WriteLine("Valor para deposito: ");
                     double deposito = Console.Read();
-                    deposito(idConta,deposito);
+                    depositar(conta, deposito);
                     break;
                 case "T":
                     Console.WriteLine("Valor a transferir: ");
@@ -92,13 +95,36 @@ namespace ExemploPraticoCSharp
                     Console.WriteLine("Agencia: ");
                     string agencia = Console.ReadLine();
                     Console.WriteLine("Conta");
-                    double conta = Console.Read();
-                    transferir(idConta, valor, agencia, conta);
-
+                    double contaT = Console.Read();
+                    transferir(conta, valor, agencia, contaT);
                     break;
             }
         }
 
+        private static void transferir(Conta conta, double valor, string agencia, double contaT)
+        {
+            
+        }
+
+        private static void depositar(Conta conta, double deposito)
+        {
+            conta.Depositar(deposito);
+            Console.WriteLine("Depósitado");
+        }
+
+        private static void sacar(Conta conta, double valorSaque)
+        {
+            conta.Sacar(valorSaque);
+            Console.WriteLine("Saque realizado");
+
+        }
+
+        private static void Saldo(Conta conta)
+        {
+            Console.WriteLine(conta._saldo);
+        }
+
+        
         /// <summary>
         /// Abre o menu de opções do colaborador
         /// </summary>

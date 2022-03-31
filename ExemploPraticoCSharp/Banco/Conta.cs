@@ -5,9 +5,9 @@ namespace ExemploPraticoCSharp.Banco
     class Conta
     {
         public String IdConta { get;}
-        private String agencia;
-        private double _saldo;
-        private Cliente cliente;
+        public String agencia { get; }
+        public double _saldo { get; }
+        public Cliente cliente { get; }
 
         public void Depositar(double valor)
         {

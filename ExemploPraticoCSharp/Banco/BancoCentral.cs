@@ -9,7 +9,7 @@ namespace ExemploPraticoCSharp.Banco
         private String nome;
         private String agencia;
         private Endereco endereco;
-        public int QtdClientes { get; }
+        public int QtdClientes { get; private set; }
         private int qtdFuncionarios;
 
         public Conta[] Contas { get;  }
@@ -20,27 +20,27 @@ namespace ExemploPraticoCSharp.Banco
             this.nome = nome;
             this.agencia = agencia;
             this.endereco = endereco;
-            this.qtdClientes = 0;
+            QtdClientes = 0;
             this.qtdFuncionarios = 0;
-            contas = new Conta[50];
+            Contas = new Conta[50];
             funcionarios = new Funcionario[50];
         }
 
         public void AbrirConta(Conta conta)
         {
-            contas[qtdClientes] = conta;
-            qtdClientes++;
+            Contas[QtdClientes] = conta;
+            QtdClientes++;
 
         }
 
         public void FecharConta(String idConta)
         {
-            for (int i = 0; i < qtdClientes; i++)
+            for (int i = 0; i < QtdClientes; i++)
             {
-                if (contas[i].IdConta == idConta)
+                if (Contas[i].IdConta == idConta)
                 {
-                    contas[i] = null;
-                    qtdClientes++;
+                    Contas[i] = null;
+                    QtdClientes++;
                 }
                 // chama reordena
             }
@@ -54,12 +54,12 @@ namespace ExemploPraticoCSharp.Banco
 
         public void DesligaFuncionario(String idFuncionario)
         {
-            for (int i = 0; i < qtdClientes; i++)
+            for (int i = 0; i < QtdClientes; i++)
             {
                 if (funcionarios[i].id == idFuncionario)
                 {
-                    contas[i] = null;
-                    qtdClientes++;
+                    Contas[i] = null;
+                    QtdClientes++;
                 }
                 // chama reordena
             }
