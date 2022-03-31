@@ -9,10 +9,10 @@ namespace ExemploPraticoCSharp.Banco
         private String nome;
         private String agencia;
         private Endereco endereco;
-        private int qtdClientes;
+        public int QtdClientes { get; }
         private int qtdFuncionarios;
 
-        private Conta[] contas;
+        public Conta[] Contas { get;  }
         private Funcionario[] funcionarios;
 
         public BancoCentral(String nome, String agencia, Endereco endereco)

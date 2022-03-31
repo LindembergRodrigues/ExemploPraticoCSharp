@@ -30,7 +30,10 @@ namespace ExemploPraticoCSharp
             }
             else if (opcao.ToUpper() == "C")
             {
-                Colaborador();
+                Console.WriteLine("ID colaborador");
+                String colaborador = Console.ReadLine();
+                if (isColaborador(BC,colaborador))
+                    Colaborador(colaborador);
             }
             else
                 Console.WriteLine("OPÇÃO INVALIDA!");
@@ -38,6 +41,25 @@ namespace ExemploPraticoCSharp
 
 
         }
+        /// <summary>
+        /// verifica se o id informado corresponde ao de um colaborador
+        /// </summary>
+        /// <param name="bC"></param>
+        /// <param name="colaborador"></param>
+        /// <returns></returns>
+        private static bool isColaborador(BancoCentral bC, string colaborador)
+        {
+            for (int i = 0; i < bC.QtdClientes; i++)
+            {
+                if (bC.Contas[i].IdConta == colaborador)
+                {
+                    return true;
+                    break;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// Menu de opção para manutenção de colaboradores
         /// </summary>
