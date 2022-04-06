@@ -6,8 +6,26 @@ namespace ExemploPraticoCSharp.Banco
     {
         public String IdConta { get;}
         public String agencia { get; }
-        public double _saldo { get; }
+        public double _saldo { get; private set; }
         public Cliente cliente { get; }
+
+        public Conta()
+        {
+
+        }
+        public Conta(String agencia, string IdConta)
+        {
+            this.agencia = agencia;
+            this.IdConta = IdConta;
+        }
+
+        public Conta(String agencia, string IdConta, Cliente novoCliente, double saldo = 0)
+        {
+            this.agencia = agencia;
+            this.IdConta = IdConta;
+            cliente = novoCliente;
+            _saldo = saldo;
+        }
 
         public void Depositar(double valor)
         {
@@ -32,6 +50,20 @@ namespace ExemploPraticoCSharp.Banco
                 conta.Depositar(valor);
                 Sacar(valor);
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            Conta conta = obj as Conta;
+            if (conta == null)
+                return false;
+
+            return conta.agencia == agencia && conta.IdConta == IdConta ;
+        }
+
+        public override string ToString()
+        {
+            return $"Olá {cliente.ToString} ";
         }
     }
 }

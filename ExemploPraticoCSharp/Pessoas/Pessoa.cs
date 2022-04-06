@@ -14,6 +14,10 @@ namespace ExemploPraticoCSharp.Pessoas
             Enderecos = enderecos;
         }
 
-     }
+        public override string ToString()
+        {
+            return $"Olá {Nome}";
+        }
+    }
 }
 
